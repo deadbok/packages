@@ -144,6 +144,7 @@ endef
 define Py3Package/python3/filespec
 +|/usr/lib/python$(PYTHON_VERSION)
 -|/usr/lib/python$(PYTHON_VERSION)/config-$(PYTHON_VERSION)
++|/usr/lib/python$(PYTHON_VERSION)/config-$(PYTHON_VERSION)/Makefile
 -|/usr/lib/python$(PYTHON_VERSION)/distutils/cygwinccompiler.py
 -|/usr/lib/python$(PYTHON_VERSION)/distutils/command/wininst*
 -|/usr/lib/python$(PYTHON_VERSION)/idlelib
@@ -157,6 +158,7 @@ define Py3Package/python3/filespec
 -|/usr/lib/python$(PYTHON_VERSION)/webbrowser.py
 -|/usr/lib/python$(PYTHON_VERSION)/*/test
 -|/usr/lib/python$(PYTHON_VERSION)/*/tests
++|/usr/include/python$(PYTHON_VERSION)/pyconfig.h
 endef
 
 define Py3Package/python3-base/install
