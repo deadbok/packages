@@ -24,10 +24,15 @@ define Package/git
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=Version Control Systems
-  DEPENDS:=+libopenssl +libpthread +librt
+  DEPENDS:=+libopenssl +libpthread +librt +GIT_curl:libcurl
   TITLE:=The fast version control system
   URL:=http://git-scm.com
   MAINTAINER:=Peter Wagner <tripolar@gmx.at>
+  MENU:=1
+endef
+
+define Package/git/config
+	source "$(SOURCE)/Config.in"
 endef
 
 define Package/git/description
@@ -41,7 +46,6 @@ MAKE_FLAGS := \
 	CFLAGS="$(TARGET_CFLAGS)" \
 	CPPFLAGS="$(TARGET_CPPFLAGS)" \
 	LDFLAGS="$(TARGET_LDFLAGS)" \
-	NO_CURL="YesPlease" \
 	NO_EXPAT="YesPlease" \
 	NO_MKSTEMPS="YesPlease" \
 	NO_GETTEXT="YesPlease" \
@@ -53,7 +57,12 @@ MAKE_FLAGS := \
 	NO_PYTHON="YesPlease" \
 	NO_TCLTK="YesPlease"
 
+ifeq ($(CONFIG_GIT_curl),)
+MAKE_FLAGS+=NO_CURL="YesPlease"
+endif
+
 define Build/Configure
+	@echo $(DEPENDS)
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		configure
 
