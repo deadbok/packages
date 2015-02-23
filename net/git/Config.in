@@ -1,7 +1,0 @@
-if PACKAGE_git
-	config GIT_curl
-		bool "Use libcurl"
-		default n
-		help
-			Enables support for more protocols including HTTPS.
-endif

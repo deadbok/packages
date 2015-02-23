@@ -1,0 +1,11 @@
+--- git-2.3.0/Makefile	2015-02-23 22:48:13.632809913 +0100
++++ git-2.3.0.new/Makefile	2015-02-23 22:43:59.408988148 +0100
+@@ -1640,7 +1640,7 @@
+ 
+ git$X: git.o GIT-LDFLAGS $(BUILTIN_OBJS) $(GITLIBS)
+ 	$(QUIET_LINK)$(CC) $(ALL_CFLAGS) -o $@ $(ALL_LDFLAGS) git.o \
+-		$(BUILTIN_OBJS) $(LIBS)
++		$(BUILTIN_OBJS) $(LIBS) $(IMAP_SEND_LDFLAGS) $(IMAP_SEND_BUILDDEPS)
+ 
+ help.sp help.s help.o: common-cmds.h
+ 
